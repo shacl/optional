@@ -59,7 +59,7 @@ if(optional.tests)
     shacl::optional)
 endif()
 
-#add_subdirectory(src/shacl)
+add_subdirectory(src/shacl)
 
 install(TARGETS optional EXPORT optionalTargets)
 
