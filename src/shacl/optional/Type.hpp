@@ -22,6 +22,7 @@ public:
   #include "shacl/optional/Type/emplace.hpp"
   #include "shacl/optional/Type/value.hpp"
   #include "shacl/optional/Type/value_or.hpp"
+  #include "shacl/optional/Type/comparison.hpp"
 
   ~Type() = default;
 

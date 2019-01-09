@@ -4,6 +4,8 @@ add_executable(optional.Type.test
   copyAssign.test.cpp
   dereference.test.cpp
   dtor.test.cpp
+  equality.test.cpp
+  inequality.test.cpp
   has_value.test.cpp
   move.test.cpp
   moveAssign.test.cpp

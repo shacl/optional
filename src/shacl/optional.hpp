@@ -55,6 +55,11 @@ using Type = std::optional<T>;
 #include "shacl/optional/detail/Curry.hpp"
 
 #include "shacl/optional/IsInstance.hpp"
+
+#ifdef SHACL_OPTIONAL_BACKPORT
+#include "shacl/optional/comparison.hpp"
+#endif
+
 #include "shacl/optional/make.hpp"
 #include "shacl/optional/map.hpp"
 #include "shacl/optional/bind.hpp"

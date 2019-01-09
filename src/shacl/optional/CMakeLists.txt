@@ -18,3 +18,8 @@ target_sources(optional INTERFACE
 
 add_subdirectory(detail)
 add_subdirectory(Type)
+
+if(optional.tests)
+  add_subdirectory(map/test)
+  add_subdirectory(bind/test)
+endif()

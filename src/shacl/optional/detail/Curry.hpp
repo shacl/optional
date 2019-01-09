@@ -36,6 +36,15 @@ public:
     return Host{}(std::move(Parent::get(ebo::index<0>)),
                   std::forward<Args>(args)...);
   }
+
+  template<typename Arg, typename Curry_t,
+           std::enable_if_t
+           <std::is_same<std::decay_t<Curry_t>, Curry>::value, bool> = true>
+  friend auto operator|(Arg&& arg, Curry_t&& curry)
+    noexcept(trait::InvokeNoThrow_v<Curry_t, Arg>)
+    -> trait::InvokeResult_t<Curry_t, Arg> {
+    return std::forward<Curry_t>(curry)(std::forward<Arg>(arg));
+  }
 };
 
 }

@@ -1,7 +1,7 @@
 class map_fn {
   template<typename Fn, typename... Args>
   using Result = Type<trait::InvokeResult_t
-                      <Fn, decltype(std::declval<Args>.value())...>>;
+                      <Fn, decltype(std::declval<Args>().value())...>>;
 
   template<typename Fn>
   using Curry = detail::Curry<Fn, map_fn, Result>;
@@ -19,13 +19,15 @@ public:
              IsInstance_v<std::decay_t<Args>>...), bool> = true>
   constexpr auto operator()(Fn&& fn, Arg&& arg, Args&&... args) const
     noexcept(trait::InvokeNoThrow_v
-             <Fn, decltype(std::declval<Arg>().value()),
+             <Fn,
+              decltype(std::declval<Arg>().value()),
               decltype(std::declval<Args>().value())...>)
     -> Result<Fn, Arg, Args...> {
     return detail::all(bool(arg), bool(args)...)
-      ? trait::detail::INVOKE(std::forward<Fn>(fn),
-                              *std::forward<Arg>(arg),
-                              *std::forward<Args>(args)...)
+      ? shacl::optional::make
+        (trait::detail::INVOKE(std::forward<Fn>(fn),
+                               *std::forward<Arg>(arg),
+                               *std::forward<Args>(args)...))
       : nullopt;
   }
 };

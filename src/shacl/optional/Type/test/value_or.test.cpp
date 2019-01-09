@@ -38,8 +38,8 @@ SCENARIO("value_or"){
           ignore(t);
           REQUIRE_FALSE(arg.copiedFrom);
           REQUIRE_FALSE(arg.movedFrom);
-          REQUIRE(co->copiedFrom);
-          REQUIRE_FALSE(co->movedFrom);
+          REQUIRE(co.value().copiedFrom);
+          REQUIRE_FALSE(co.value().movedFrom);
         }
       }
 
@@ -51,8 +51,8 @@ SCENARIO("value_or"){
           ignore(t);
           REQUIRE_FALSE(arg.copiedFrom);
           REQUIRE_FALSE(arg.movedFrom);
-          REQUIRE(co->copiedFrom);
-          REQUIRE_FALSE(co->movedFrom);
+          REQUIRE(co.value().copiedFrom);
+          REQUIRE_FALSE(co.value().movedFrom);
         }
       }
     }
@@ -116,8 +116,8 @@ SCENARIO("value_or"){
           ignore(t);
           REQUIRE_FALSE(arg.copiedFrom);
           REQUIRE_FALSE(arg.movedFrom);
-          REQUIRE_FALSE(o->copiedFrom);
-          REQUIRE(o->movedFrom);
+          REQUIRE_FALSE(o.value().copiedFrom);
+          REQUIRE(o.value().movedFrom);
         }
       }
 
@@ -129,8 +129,8 @@ SCENARIO("value_or"){
           ignore(t);
           REQUIRE_FALSE(arg.copiedFrom);
           REQUIRE_FALSE(arg.movedFrom);
-          REQUIRE_FALSE(o->copiedFrom);
-          REQUIRE(o->movedFrom);
+          REQUIRE_FALSE(o.value().copiedFrom);
+          REQUIRE(o.value().movedFrom);
         }
       }
     }
@@ -145,8 +145,6 @@ SCENARIO("value_or"){
             ignore(t);
             REQUIRE(arg.copiedFrom);
             REQUIRE_FALSE(arg.movedFrom);
-            REQUIRE_FALSE(o->copiedFrom);
-            REQUIRE_FALSE(o->movedFrom);
           }
         }
 
@@ -156,8 +154,6 @@ SCENARIO("value_or"){
             ignore(t);
             REQUIRE_FALSE(arg.copiedFrom);
             REQUIRE(arg.movedFrom);
-            REQUIRE_FALSE(o->copiedFrom);
-            REQUIRE_FALSE(o->movedFrom);
           }
         }
       }
@@ -171,8 +167,6 @@ SCENARIO("value_or"){
             ignore(t);
             REQUIRE(arg.copiedFrom);
             REQUIRE_FALSE(arg.movedFrom);
-            REQUIRE_FALSE(o->copiedFrom);
-            REQUIRE_FALSE(o->movedFrom);
           }
         }
 
@@ -182,8 +176,6 @@ SCENARIO("value_or"){
             ignore(t);
             REQUIRE_FALSE(arg.copiedFrom);
             REQUIRE(arg.movedFrom);
-            REQUIRE_FALSE(o->copiedFrom);
-            REQUIRE_FALSE(o->movedFrom);
           }
         }
       }

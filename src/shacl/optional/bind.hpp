@@ -1,7 +1,7 @@
 class bind_fn {
   template<typename Fn, typename... Args>
   using Result =
-    trait::InvokeResult_t<Fn, decltype(std::declval<Args>.value())...>;
+    trait::InvokeResult_t<Fn, decltype(std::declval<Args>().value())...>;
 
   template<typename Fn>
   using Curry = detail::Curry<Fn, bind_fn, Result>;
