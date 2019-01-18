@@ -72,4 +72,7 @@ using Optional = optional::Type<T>;
 
 }
 
+#undef likely
+#undef unlikely
+
 #endif //SHACL_OPTIONAL_HPP
