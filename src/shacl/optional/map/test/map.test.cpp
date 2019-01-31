@@ -17,7 +17,7 @@ struct Nonargument{};
 
 template<int i>
 struct Result {
-  static constexpr int value = i;
+  static constexpr int value(){ return i; }
   bool operator==(const Result&) const { return true; }
   bool operator!=(const Result&) const { return false; }
 };
@@ -114,7 +114,7 @@ SCENARIO("map"){
           THEN("the resulting optional will be engaged"){
             auto oresult = shacl::optional::map(callable, oa);
             REQUIRE(oresult.has_value());
-            REQUIRE(0 == oresult->value);
+            REQUIRE(0 == oresult->value());
           }
         }
 
@@ -122,7 +122,7 @@ SCENARIO("map"){
           THEN("the resulting optional will be engaged"){
             auto oresult = shacl::optional::map(std::move(callable), oa);
             REQUIRE(oresult.has_value());
-            REQUIRE(1 == oresult->value);
+            REQUIRE(1 == oresult->value());
           }
         }
 
@@ -132,7 +132,7 @@ SCENARIO("map"){
           THEN("the resulting optional will be engaged"){
             auto oresult = shacl::optional::map(ccallable, oa);
             REQUIRE(oresult.has_value());
-            REQUIRE(2 == oresult->value);
+            REQUIRE(2 == oresult->value());
           }
         }
 
@@ -142,7 +142,7 @@ SCENARIO("map"){
           THEN("the resulting optional will be engaged"){
             auto oresult = shacl::optional::map(std::move(ccallable), oa);
             REQUIRE(oresult.has_value());
-            REQUIRE(3 == oresult->value);
+            REQUIRE(3 == oresult->value());
           }
         }
       }
@@ -236,7 +236,7 @@ SCENARIO("map"){
           THEN("the resuling optional will be engaged"){
             auto oresult = liftedCallable(oa);
             REQUIRE(oresult.has_value());
-            REQUIRE(0 == oresult->value);
+            REQUIRE(0 == oresult->value());
           }
 
           THEN("pipeing arguments is equivalent to calling"){

@@ -33,12 +33,13 @@ static constexpr nullopt_t nullopt{};
 template<typename T>
 class Type;
 
-#include "shacl/optional/detail.hpp"
+#include "shacl/optional/detail.hpp"  
 #include "shacl/optional/bad_access.hpp"
 #include "shacl/optional/Type.hpp"
 
 #else //SHACL_OPTIONAL_BACKPORT
 
+#include "shacl/optional/detail.hpp"
 using std::in_place_t;
 using std::in_place;
 
@@ -66,9 +67,12 @@ using Type = std::optional<T>;
 
 }
 
-template<typename... Ts>
-using Optional = optional::Type<Ts...>;
+template<typename T>
+using Optional = optional::Type<T>;
 
 }
+
+#undef likely
+#undef unlikely
 
 #endif //SHACL_OPTIONAL_HPP

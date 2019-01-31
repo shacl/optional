@@ -1,7 +1,7 @@
 namespace detail {
 
 #include "shacl/optional/detail/all.hpp"
-
+#ifdef SHACL_OPTIONAL_BACKPORT
 #include "shacl/optional/detail/Storage.hpp"
 #include "shacl/optional/detail/Operations.hpp"
 #include "shacl/optional/detail/Copy.hpp"
@@ -60,5 +60,5 @@ using enable_assign_from_other =
    and not std::is_assignable<T&, const Type<U>&>::value
    and not std::is_assignable<T&, const Type<U>&&>::value,
    bool>;
-
+#endif
 }
