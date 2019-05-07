@@ -65,12 +65,10 @@ endif()
 add_library(optional-14 INTERFACE)
 add_library(shacl::optional-14 ALIAS optional-14)
 
-target_compile_features(optional INTERFACE cxx_std_14)
-
 find_package(shacl REQUIRED COMPONENTS trait ebo)
 find_package(mpark_variant)
 
-if(mpark_FOUND)
+if(mpark_variant_FOUND)
   target_link_libraries(optional-14 INTERFACE $<BUILD_INTERFACE:mpark_variant>)
 
   string(CONCAT generator
@@ -83,6 +81,10 @@ if(mpark_FOUND)
 
   target_link_libraries(optional INTERFACE ${generator})
   unset(generator)
+
+  target_compile_features(optional INTERFACE cxx_std_14)
+else()
+  target_compile_features(optional INTERFACE cxx_std_17)
 endif()
 
 target_link_libraries(optional INTERFACE
@@ -95,7 +97,7 @@ string(CONCAT prefix
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
-target_include_directories(optional optional-14 INTERFACE "${prefix}")
+target_include_directories(optional INTERFACE "${prefix}")
 
 add_subdirectory(include/shacl)
 
@@ -108,7 +110,7 @@ install(FILES
   "${PROJECT_SOURCE_DIR}/.cmake/shacl-config.cmake"
   DESTINATION share/cmake/shacl)
 
-install(TARGETS optional EXPORT optionalTargets)
+install(TARGETS optional optional-14 EXPORT optionalTargets)
 
 install(EXPORT optionalTargets
   FILE "shacl-optional-targets.cmake"

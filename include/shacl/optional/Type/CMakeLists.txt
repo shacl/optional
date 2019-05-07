@@ -6,6 +6,6 @@ target_sources(optional-14 INTERFACE
   "${prefix}/shacl/optional/Type/value.hpp"
   "${prefix}/shacl/optional/Type/value_or.hpp")
 
-if(shacl.optional.tests)
+if(shacl.optional.tests and mpark_variant_FOUND)
   add_subdirectory(test)
 endif()
