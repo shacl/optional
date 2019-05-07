@@ -16,10 +16,10 @@ set( expected_Flang "" )
 set( expected_PGI "-Mstandard" ) 
 
 add_test(
-  NAME Fortran.Standard
+  NAME shacl.cmake.Fortran.Standard
   COMMAND use_standard
 )
-set_tests_properties(Fortran.Standard
+set_tests_properties(shacl.cmake.Fortran.Standard
 PROPERTIES
   PASS_REGULAR_EXPRESSION "^${expected_${CMAKE_Fortran_COMPILER_ID}}\n$"
 )
