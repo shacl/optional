@@ -50,19 +50,19 @@ if( "${CMAKE_Fortran_COMPILER_ID}" STREQUAL "Intel" )
 endif()
 
 add_test(
-  NAME intel_fp_speculation_C
+  NAME shacl.cmake.intel_fp_speculation_C
   COMMAND use_intel_fp_speculation_C
 )
-set_tests_properties(intel_fp_speculation_C PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_C}$")
+set_tests_properties(shacl.cmake.intel_fp_speculation_C PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_C}$")
 
 add_test(
-  NAME intel_fp_speculation_CXX
+  NAME shacl.cmake.intel_fp_speculation_CXX
   COMMAND use_intel_fp_speculation_CXX
 )
-set_tests_properties(intel_fp_speculation_CXX PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_CXX}$")
+set_tests_properties(shacl.cmake.intel_fp_speculation_CXX PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_CXX}$")
 
 add_test(
-  NAME intel_fp_speculation_Fortran
+  NAME shacl.cmake.intel_fp_speculation_Fortran
   COMMAND use_intel_fp_speculation_Fortran
 )
-set_tests_properties(intel_fp_speculation_Fortran PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_Fortran}$")
+set_tests_properties(shacl.cmake.intel_fp_speculation_Fortran PROPERTIES PASS_REGULAR_EXPRESSION "^${expected_Fortran}$")

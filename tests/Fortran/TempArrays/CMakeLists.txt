@@ -16,9 +16,9 @@ endif()
 set(expected_PGI "-Mnostack_arrays")
 
 add_test(
-  NAME Fortran.TempArrays
+  NAME shacl.cmake.Fortran.TempArrays
   COMMAND use_temp_arrays
 )
-set_tests_properties(Fortran.TempArrays PROPERTIES
+set_tests_properties(shacl.cmake.Fortran.TempArrays PROPERTIES
   PASS_REGULAR_EXPRESSION "^${expected_${CMAKE_Fortran_COMPILER_ID}}\n$"
 )
