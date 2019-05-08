@@ -79,10 +79,7 @@ if(mpark_variant_FOUND)
   string(CONCAT generator
     "$<BUILD_INTERFACE:"
       "$<$<VERSION_LESS:"
-          "$<TARGET_PROPERTY:CXX_STANDARD>,17"
-        ">:shacl::optional-14"
-      ">"
-    ">")
+        "$<TARGET_PROPERTY:CXX_STANDARD>,17>:shacl::optional-14>>")
 
   target_link_libraries(optional INTERFACE ${generator})
   unset(generator)
@@ -92,9 +89,7 @@ else()
   target_compile_features(optional INTERFACE cxx_std_17)
 endif()
 
-target_link_libraries(optional INTERFACE
-  shacl::trait
-  shacl::ebo)
+target_link_libraries(optional INTERFACE shacl::trait shacl::ebo)
 
 include(GNUInstallDirs)
 
